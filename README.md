@@ -11,7 +11,7 @@ Código -> https://github.com/LEDFACIL/HUB12-1-8-scan-64x16/blob/main/HUB12_1_8.
 
 ![INFO](https://github.com/LEDFACIL/HUB12-1-8-scan-64x16/blob/main/info.jpg)
 
-Hoja de cálculo para generar los valores de los elementos del arreglo -> info@Lasso-Tech.com
+Hoja de cálculo para generar los valores de los elementos del arreglo -> https://lasso-tech.com/producto/hoja-de-calculo-hub12-64x16-1-8-scan/
 
 ![Ejemplo hoja de cálculo](https://github.com/LEDFACIL/HUB12-1-8-scan-64x16/blob/main/HC.jpg)
 
