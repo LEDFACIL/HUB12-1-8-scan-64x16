@@ -33,7 +33,7 @@ void setup()
 
 void loop() 
 {
-  digitalWrite(oe_pin, 0); 
+  digitalWrite(oe_pin, 0); // segundo movimiento de bit para habilitar/deshabilitar las salidas de los multiplexores, para evitar efecto "ghosting" generando un apagado forzado de todos los LEDs
   // Selectores de fila
   if(fila == 0) { digitalWrite(a_pin, 0); digitalWrite(b_pin, 0); digitalWrite(c_pin, 0); } // "fila == 0" corresponde a las filas 8 y 16 viendo a la matriz físicamente de frente contando desde arriba desde la 1 (primer fila) hacia abajo, la 16 (última de abajo).
   if(fila == 1) { digitalWrite(a_pin, 1); digitalWrite(b_pin, 1); digitalWrite(c_pin, 1); } // "fila == 1" corresponde a las filas 7 y 15
@@ -57,7 +57,7 @@ void loop()
 
   digitalWrite(sclk_pin, 1); // primer movimiento para consolidar la salida de los 16 bytes de la fila actual
   digitalWrite(sclk_pin, 0); // segundo movimiento para consolidar la salida de los 16 bytes de la fila actual
-  digitalWrite(oe_pin, 1); 
+  digitalWrite(oe_pin, 1); // primer movimiento de bit para habilitar/deshabilitar las salidas de los multiplexores, para evitar efecto "ghosting" generando un apagado forzado de todos los LEDs
   //delay(1); // estde delay genera una atenuación, es un detalle opcional
 
   fila++; // cambio de fila
