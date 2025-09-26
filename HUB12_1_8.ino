@@ -33,16 +33,16 @@ void setup()
 
 void loop() 
 {
-  digitalWrite(oe_pin, 0); // habilita la matriz, enciende los LEDs
-
-  if(fila == 0) { digitalWrite(a_pin, 0); digitalWrite(b_pin, 0); digitalWrite(c_pin, 0); } // Selectores de fila
-  if(fila == 1) { digitalWrite(a_pin, 1); digitalWrite(b_pin, 1); digitalWrite(c_pin, 1); } 
-  if(fila == 2) { digitalWrite(a_pin, 0); digitalWrite(b_pin, 1); digitalWrite(c_pin, 1); }
-  if(fila == 3) { digitalWrite(a_pin, 1); digitalWrite(b_pin, 0); digitalWrite(c_pin, 1); }
-  if(fila == 4) { digitalWrite(a_pin, 0); digitalWrite(b_pin, 0); digitalWrite(c_pin, 1); }
-  if(fila == 5) { digitalWrite(a_pin, 1); digitalWrite(b_pin, 1); digitalWrite(c_pin, 0); }
-  if(fila == 6) { digitalWrite(a_pin, 0); digitalWrite(b_pin, 1); digitalWrite(c_pin, 0); }  
-  if(fila == 7) { digitalWrite(a_pin, 1); digitalWrite(b_pin, 0); digitalWrite(c_pin, 0); } 
+  digitalWrite(oe_pin, 0); 
+  // Selectores de fila
+  if(fila == 0) { digitalWrite(a_pin, 0); digitalWrite(b_pin, 0); digitalWrite(c_pin, 0); } // "fila == 0" corresponde a las filas 8 y 16 viendo a la matriz físicamente de frente contando desde arriba desde la 1 (primer fila) hacia abajo, la 16 (última de abajo).
+  if(fila == 1) { digitalWrite(a_pin, 1); digitalWrite(b_pin, 1); digitalWrite(c_pin, 1); } // "fila == 1" corresponde a las filas 7 y 15
+  if(fila == 2) { digitalWrite(a_pin, 0); digitalWrite(b_pin, 1); digitalWrite(c_pin, 1); } // "fila == 2" corresponde a las filas 6 y 14
+  if(fila == 3) { digitalWrite(a_pin, 1); digitalWrite(b_pin, 0); digitalWrite(c_pin, 1); } // "fila == 3" corresponde a las filas 7 y 13
+  if(fila == 4) { digitalWrite(a_pin, 0); digitalWrite(b_pin, 0); digitalWrite(c_pin, 1); } // "fila == 4" corresponde a las filas 4 y 12
+  if(fila == 5) { digitalWrite(a_pin, 1); digitalWrite(b_pin, 1); digitalWrite(c_pin, 0); } // "fila == 5" corresponde a las filas 3 y 11
+  if(fila == 6) { digitalWrite(a_pin, 0); digitalWrite(b_pin, 1); digitalWrite(c_pin, 0); } // "fila == 6" corresponde a las filas 2 y 10  
+  if(fila == 7) { digitalWrite(a_pin, 1); digitalWrite(b_pin, 0); digitalWrite(c_pin, 0); } // "fila == 7" corresponde a las filas 1 y 9
   
   for(int i=0;i<=120;i+=8) // "for" para recorrer byte por byte del arreglo
   {     
@@ -50,14 +50,14 @@ void loop()
     {
       bit = bitRead(mensaje[fila+i],x); // lectura del bit dentro del byte actual
       digitalWrite(dato_pinR, bit);     // escritura del bit en la salida 
-      digitalWrite(clk_pin, 1);         // primer movimiento para consolidar el bit
+      digitalWrite(clk_pin, 1);         // primer movimiento para consolidar el bit 
       digitalWrite(clk_pin, 0);         // segundo movimiento para consolidar el bit
     }    
   }
 
-  digitalWrite(sclk_pin, 1); // primer movimiento para consolidar el byte
-  digitalWrite(sclk_pin, 0); // segundo movimiento para consolidar el byte
-  digitalWrite(oe_pin, 1);   // deshabilita la matriz, apaga los LEDs
+  digitalWrite(sclk_pin, 1); // primer movimiento para consolidar la salida los 16 bytes de la fila actual
+  digitalWrite(sclk_pin, 0); // segundo movimiento para consolidar la salida los 16 bytes de la fila actual
+  digitalWrite(oe_pin, 1); 
   //delay(1); // estde delay genera una atenuación, es un detalle opcional
 
   fila++; // cambio de fila
