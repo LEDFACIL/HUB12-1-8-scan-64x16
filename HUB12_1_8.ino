@@ -55,8 +55,8 @@ void loop()
     }    
   }
 
-  digitalWrite(sclk_pin, 1); // primer movimiento para consolidar la salida los 16 bytes de la fila actual
-  digitalWrite(sclk_pin, 0); // segundo movimiento para consolidar la salida los 16 bytes de la fila actual
+  digitalWrite(sclk_pin, 1); // primer movimiento para consolidar la salida de los 16 bytes de la fila actual
+  digitalWrite(sclk_pin, 0); // segundo movimiento para consolidar la salida de los 16 bytes de la fila actual
   digitalWrite(oe_pin, 1); 
   //delay(1); // estde delay genera una atenuación, es un detalle opcional
 
